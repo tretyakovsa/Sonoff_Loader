@@ -6,40 +6,49 @@
 #include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
 #include <ESP8266httpUpdate.h>
 #define TRIGGER_PIN 0
-
+#define LED_PIN 13    // Светодиод
 
 void setup() {
   Serial.begin(115200);
   Serial.println("\n Starting");
   pinMode(TRIGGER_PIN, INPUT);
   // Подключаемся к wifi если подключения нет уходим в основной цикл.
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, HIGH);
   WIFIinit();
+  digitalWrite(LED_PIN, LOW);
+
 }
 
 void loop() {
   // Проверяем нажатие на кнопку и если кнопка нажата перейдем в режим AP для настройки подключения
   OnDemandAP();
   // Проверяем подключины мы к роутеру и если да делаем перепрошивку модуля с сервера
-  if (WiFi.status() == WL_CONNECTED){
+  if (WiFi.status() == WL_CONNECTED) {
+    digitalWrite(LED_PIN, HIGH);
     Serial.println("ESP Update");
-  webUpdate();
+    //Обновляем оба файла с сервера
+    webUpdate();
   }
 }
 void webUpdate() {
   // отключаем перезагрузку после обнавления FS
+  digitalWrite(LED_PIN, LOW);
   ESPhttpUpdate.rebootOnUpdate(false);
   //Обнавляем FS
   t_httpUpdate_return ret = ESPhttpUpdate.updateSpiffs("http://backup.privet.lv/esp/sonoff/spiffs.0xBB000_flash_size_1Mb.256Kb_2017.04.21.bin");
   // включаем перезагрузку после прошивки
+  digitalWrite(LED_PIN, HIGH);
   ESPhttpUpdate.rebootOnUpdate(true);
   // Перепрошиваем модуль
   t_httpUpdate_return ret1 = ESPhttpUpdate.update("http://backup.privet.lv/esp/sonoff/build.0x00000_flash_size_1Mb.256Kb_2017.04.21.bin");
 }
 
-void OnDemandAP(){
-   if ( digitalRead(TRIGGER_PIN) == LOW ) {
+void OnDemandAP() {
+  if ( digitalRead(TRIGGER_PIN) == LOW ) {
+    digitalWrite(LED_PIN, HIGH);
     WiFiManager wifiManager;
-    if (!wifiManager.startConfigPortal("OnDemandAP")) {
+    if (!wifiManager.startConfigPortal("sonoff-loader")) {
       Serial.println("failed to connect and hit timeout");
       delay(3000);
       //reset and try again, or maybe put it to deep sleep
@@ -48,9 +57,10 @@ void OnDemandAP(){
     }
     Serial.println("connected...yeey :)");
   }
-  }
-  void WIFIinit() {
+}
+void WIFIinit() {
   // Попытка подключения к точке доступа
+  WiFi.disconnect();
   WiFi.mode(WIFI_STA);
   byte tries = 11;
   WiFi.begin();
@@ -65,7 +75,7 @@ void OnDemandAP(){
   {
     // Если не удалось подключиться запускаем в режиме AP
     Serial.println("");
-    Serial.println("WiFi up AP");
+    Serial.println("take tach");
   }
   else {
     // Иначе удалось подключиться отправляем сообщение
