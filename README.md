@@ -3,10 +3,8 @@
 ![alt](https://raw.githubusercontent.com/tretyakovsa/Sonoff_Loader/master/tutorial/screen.png)
 
 
-
-
-
 #### Used Libraries
+
 - #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
 - //needed for library
 - #include <ESP8266WebServer.h>
@@ -15,6 +13,8 @@
 - #include <ESP8266httpUpdate.h>
 
 ## Work example (Video)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0DNJrF5F8aM/0.jpg)](https://www.youtube.com/watch?v=0DNJrF5F8aM)
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/NrIrLw1rOdk/0.jpg)](https://www.youtube.com/watch?v=NrIrLw1rOdk&list=PL6NJTNxbvy-IPTDQk8XjTV41oRrFafrRi)
 
