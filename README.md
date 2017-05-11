@@ -5,14 +5,21 @@
 
 #### Used Libraries
 
-/*
+```
  #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
  //needed for library
  #include <ESP8266WebServer.h>
  #include <DNSServer.h>
  #include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
  #include <ESP8266httpUpdate.h>
-*/
+```
+
+
+
+## Upload instruction
+
+### [NodeMCU Flasher (Easy)](https://github.com/tretyakovsa/Sonoff_Loader/tree/master/ESP8266Flasher)
+
 
 ## Work example (Video)
 
