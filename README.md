@@ -34,7 +34,7 @@
 
 ## Othe...
 
-#### Sonoff: [https://github.com/tretyakovsa/jaluzi](https://github.com/tretyakovsa/Sonoff_WiFi_switch/)
+#### Sonoff: [https://github.com/tretyakovsa/Sonoff_WiFi_switch](https://github.com/tretyakovsa/Sonoff_WiFi_switch)
 
 #### Jalousie: [https://github.com/tretyakovsa/jaluzi](https://github.com/tretyakovsa/jaluzi)
 
