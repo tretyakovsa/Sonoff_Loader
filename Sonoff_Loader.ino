@@ -1,5 +1,5 @@
 #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
-//needed for library
+//Need libraries
 #include <ESP8266WebServer.h>
 #include <DNSServer.h>
 #include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
