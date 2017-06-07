@@ -2,7 +2,7 @@
 <DataChest>
   <Data name="ComboBoxFlashBaudrate.Text">
     <Type>String</Type>
-    <Value>921600</Value>
+    <Value>230400</Value>
   </Data>
   <Data name="ComboBoxFlashSize.ItemIndex">
     <Type>Integer</Type>
@@ -14,7 +14,7 @@
   </Data>
   <Data name="ComboBoxSPIMode.ItemIndex">
     <Type>Integer</Type>
-    <Value>1</Value>
+    <Value>0</Value>
   </Data>
   <Data name="FrameConfigLine1.Checked">
     <Type>Boolean</Type>

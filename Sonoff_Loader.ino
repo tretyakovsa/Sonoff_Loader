@@ -15,11 +15,8 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH);
  WiFiManager wifiManager;
-
-  wifiManager.autoConnect("sonoff-loader");
-
+ wifiManager.autoConnect("sonoff-loader");
   digitalWrite(LED_PIN, LOW);
-
 }
 
 void loop() {
@@ -32,16 +29,16 @@ void loop() {
   }
 }
 void webUpdate() {
-  // отключаем перезагрузку после обнавления FS
+  // отключаем перезагрузку после обновления FS
   digitalWrite(LED_PIN, LOW);
   ESPhttpUpdate.rebootOnUpdate(false);
   //Обнавляем FS
-  t_httpUpdate_return ret = ESPhttpUpdate.updateSpiffs("http://backup.privet.lv/esp/sonoff/spiffs.0xBB000_flash_size_1Mb.256Kb_2017.05.08.bin");
+  t_httpUpdate_return ret = ESPhttpUpdate.updateSpiffs("http://backup.privet.lv/esp/sonoff/spiffs.0xBB000_flash_size_1Mb.256Kb_2017.06.07.bin");
   // включаем перезагрузку после прошивки
   digitalWrite(LED_PIN, HIGH);
   ESPhttpUpdate.rebootOnUpdate(true);
   // Перепрошиваем модуль
-  t_httpUpdate_return ret1 = ESPhttpUpdate.update("http://backup.privet.lv/esp/sonoff/build.0x00000_flash_size_1Mb.256Kb_2017.05.08.bin");
+  t_httpUpdate_return ret1 = ESPhttpUpdate.update("http://backup.privet.lv/esp/sonoff/build.0x00000_flash_size_1Mb.256Kb_2017.06.07.bin");
 }
 
 
