@@ -23,6 +23,7 @@ void loop() {
   // Проверяем подключины мы к роутеру и если да делаем перепрошивку модуля с сервера
   if (WiFi.status() == WL_CONNECTED) {
     digitalWrite(LED_PIN, HIGH);
+    digitalWrite(LED_PIN, LOW);
     Serial.println("ESP Update");
     //Обновляем оба файла с сервера
     webUpdate();
@@ -30,15 +31,14 @@ void loop() {
 }
 void webUpdate() {
   // отключаем перезагрузку после обновления FS
-  digitalWrite(LED_PIN, LOW);
-  ESPhttpUpdate.rebootOnUpdate(false);
+    ESPhttpUpdate.rebootOnUpdate(false);
   //Обнавляем FS
-  t_httpUpdate_return ret = ESPhttpUpdate.updateSpiffs("http://backup.privet.lv/esp/sonoff/spiffs.0xBB000_flash_size_1Mb.256Kb_2017.07.04.bin");
+  t_httpUpdate_return ret = ESPhttpUpdate.updateSpiffs("http://backup.privet.lv/esp/sonoff/spiffs.0xBB000_flash_size_1Mb.256Kb_2017.07.06.bin");
   // включаем перезагрузку после прошивки
   digitalWrite(LED_PIN, HIGH);
   ESPhttpUpdate.rebootOnUpdate(true);
   // Перепрошиваем модуль
-  t_httpUpdate_return ret1 = ESPhttpUpdate.update("http://backup.privet.lv/esp/sonoff/build.0x00000_flash_size_1Mb.256Kb_2017.07.04.bin");
+  t_httpUpdate_return ret1 = ESPhttpUpdate.update("http://backup.privet.lv/esp/sonoff/build.0x00000_flash_size_1Mb.256Kb_2017.07.06.bin");
 }
 
 
