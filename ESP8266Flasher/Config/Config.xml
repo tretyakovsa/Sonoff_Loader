@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DataChest>
   <Data name="ComboBoxFlashBaudrate.Text">
     <Type>String</Type>
@@ -14,7 +14,7 @@
   </Data>
   <Data name="ComboBoxSPIMode.ItemIndex">
     <Type>Integer</Type>
-    <Value>0</Value>
+    <Value>1</Value>
   </Data>
   <Data name="FrameConfigLine1.Checked">
     <Type>Boolean</Type>
